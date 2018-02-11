@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong New:
+  = @portal_user.new
+p
+  strong Index:
+  = @portal_user.index
+p
+  strong Update:
+  = @portal_user.update
+p
+  strong Destroy:
+  = @portal_user.destroy
+
+= link_to 'Edit', edit_portal_user_path(@portal_user)
+'  |
+= link_to 'Back', portal_users_path

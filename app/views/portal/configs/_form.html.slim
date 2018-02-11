@@ -1,0 +1,21 @@
+= form_for @portal_config do |f|
+  - if @portal_config.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@portal_config.errors.count, "error")} prohibited this portal_config from being saved:"
+      ul
+        - @portal_config.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :end_point
+    = f.text_field :end_point
+  .field
+    = f.label :username
+    = f.text_field :username
+  .field
+    = f.label :password
+    = f.password_field :password
+  .field
+    = f.label :info
+    = f.text_field :info
+  .actions = f.submit

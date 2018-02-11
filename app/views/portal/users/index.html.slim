@@ -1,0 +1,31 @@
+h1 Listing portal_users
+
+table.table.table-hover
+  thead
+    tr
+      th MAC
+      th IP
+      th login
+      th last_active
+      th country
+      th city
+      th
+      th
+      th
+
+  tbody
+    - @portal_users.each do |portal_user|
+      tr
+        td = portal_user.stb_mac
+        td = portal_user.ip
+        td = portal_user.login
+        td = portal_user.last_active
+        td = portal_user.country
+        td = portal_user.city
+        td = link_to 'Show', portal_config_user_path(conifg_id: portal_user.config_id, id: portal_user.id)
+        td = link_to 'Edit', edit_portal_config_user_path(conifg_id: portal_user.config_id, id: portal_user.id)
+        td = link_to 'Destroy', portal_config_user_path(conifg_id: portal_user.config_id, id: portal_user.id), data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New User', new_portal_config_user_path

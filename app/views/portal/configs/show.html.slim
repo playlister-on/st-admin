@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Endpoint:
+  = @portal_config.end_point
+p
+  strong Username:
+  = @portal_config.username
+p
+  strong Info:
+  = @portal_config.info
+p
+  strong version:
+  = @portal_config.version
+
+= link_to 'Edit', edit_portal_config_path(@portal_config)
+'  |
+= link_to 'Back', portal_configs_path

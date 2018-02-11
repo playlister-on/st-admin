@@ -1,0 +1,31 @@
+h1 Listing portal_configs
+
+table.table.table-hover
+  thead
+    tr
+      th Endpoint
+      th Username
+      th Info
+      th Version
+      th
+      th
+      th
+      th
+      th
+
+  tbody
+    - @portal_configs.each do |portal_config|
+      tr
+        td = portal_config.end_point
+        td = portal_config.username
+        td = portal_config.info
+        td = portal_config.version
+        td = link_to 'Show', portal_config
+        td = link_to 'Edit', edit_portal_config_path(portal_config)
+        td = link_to 'Destroy', portal_config, data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to 'Open', portal_config_users_path(portal_config)
+        td = link_to 'Load', load_users_portal_config_path(portal_config), method: :post
+
+br
+
+= link_to 'New Config', new_portal_config_path
