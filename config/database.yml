@@ -23,5 +23,6 @@ test:
 production:
   <<: *default
   user: st_admin
+  host: localhost
   password: szhe3bgYAvMvTn2N
   database: st_admin
