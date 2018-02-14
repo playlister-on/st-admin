@@ -4,7 +4,13 @@ class Portal::UsersController < ApplicationController
   # GET /portal/users
   # GET /portal/users.json
   def index
-    @portal_users = Portal::User.all
+    @portal_users = Portal::User.where(config_id: params[:config_id]).all
+    @push_form = Portal::PushForm.new(nil)
+    @push_form.config_id = params[:config_id]
+  end
+
+  def push
+    Portal::PushForm.new(params.require(:push_form).permit!.to_h).submit
   end
 
   # GET /portal/users/1

@@ -38,6 +38,7 @@ gem "httplog"
 gem "jquery-rails"
 gem "bootstrap-sass"
 gem 'maxminddb'
+gem 'tainbox'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -6,6 +6,13 @@ class Portal::Config < ApplicationRecord
     request_users
   end
 
+  def push(message, to:)
+    to.each do |mac|
+      next if mac.blank?
+      response = post(resource: "stb_msg/#{mac}", arguments: {body:{msg: message}})
+    end
+  end
+
   private
 
   def request_users
@@ -13,7 +20,7 @@ class Portal::Config < ApplicationRecord
     response["results"].each do |account|
       data = account.slice(*Portal::User.columns.map(&:name))
       next unless data['stb_mac'].present?
-      Portal::User.find_or_create_by(stb_mac: data.delete('stb_mac')) do |user|
+      Portal::User.find_or_create_by(stb_mac: data.delete('stb_mac'), config_id: id) do |user|
         if data["ip"].present?
           geo = GEO.lookup(data["ip"])
           data.merge!(
@@ -29,6 +36,8 @@ class Portal::Config < ApplicationRecord
       end
     end
   end
+
+
 
   def auth
     { basic_auth: { username: username, password: password } }
