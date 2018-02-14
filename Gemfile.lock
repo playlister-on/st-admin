@@ -268,7 +268,7 @@ DEPENDENCIES
   maxminddb
   pg
   pry-rails
-  puma (~> 3.7)
+  puma (~> 3.6)
   rails (~> 5.1.4)
   rspec-rails
   sass-rails (~> 5.0)
