@@ -4,7 +4,8 @@ class Portal::UsersController < ApplicationController
   # GET /portal/users
   # GET /portal/users.json
   def index
-    @portal_users = Portal::User.where(config_id: params[:config_id]).all
+    @filter_form = Portal::FilterForm.new(index_params)
+    @portal_users = Portal::User.where(config_id: params[:config_id]).where(@filter_form.values).all
     @push_form = Portal::PushForm.new(nil)
     @push_form.config_id = params[:config_id]
   end
@@ -76,5 +77,9 @@ class Portal::UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def portal_user_params
       params.require(:portal_user).permit(:new, :index, :update, :destroy)
+    end
+
+    def index_params
+      params.fetch(:filter_form, {}).permit(:country, :city).select { |k,v| v.present? }.to_h
     end
 end

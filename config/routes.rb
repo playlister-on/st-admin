@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: "portal/configs#index"
   namespace :portal do
     resources :configs do
       member do
