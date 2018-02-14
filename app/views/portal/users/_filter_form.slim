@@ -1,0 +1,6 @@
+= form_for :filter_form, url: { action: :index }, method: :get do |f|
+  = f.label :country, "Country"
+  = f.text_field :country
+  = f.label :city, "City"
+  = f.text_field :city
+  = f.submit 'Filter'
