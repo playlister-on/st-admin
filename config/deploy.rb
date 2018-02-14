@@ -1,14 +1,14 @@
 # config valid only for current version of Capistrano
 lock "3.8.1"
 
-set :application, "playlister"
-set :repo_url, "ssh://git@i4.root.sx:10022/playlister"
+set :application, "st-admin"
+set :repo_url, "https://github.com/playlister-on/st-admin.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/home/playlister/playlister"
+set :deploy_to, "/home/playlister/st-admin"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh

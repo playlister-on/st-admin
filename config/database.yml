@@ -23,5 +23,5 @@ test:
 production:
   <<: *default
   user: st_admin
-  password:
+  password: szhe3bgYAvMvTn2N
   database: st_admin
