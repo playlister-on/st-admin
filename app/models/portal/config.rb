@@ -7,13 +7,27 @@ class Portal::Config < ApplicationRecord
   end
 
   def push(message, to:)
+    wrapped_message = wrap_message(message)
     to.each do |mac|
       next if mac.blank?
-      response = post(resource: "stb_msg/#{mac}", arguments: {body:{msg: message}})
+      response = post(resource: "stb_msg/#{mac}", arguments: {body:{msg: wrapped_message}})
     end
   end
 
   private
+
+  def wrap_message(message)
+    <<~HTML
+    <div style="position: absolute; top: 0px; bottom: 0px; left: 0px; right: 0px;">
+      #{message}
+    </div>
+    <style>
+      .mb_info .mb_info_lt_head,.mb_info_top_head,.mb_info_rt_head,.mb_info_lt_head,.mb_info_lb,.mb_info_main,.mb_info_rb {
+        background: transparent !important;
+      }
+    </style>
+    HTML
+  end
 
   def request_users
     response = request(resource: :accounts, arguments: {})

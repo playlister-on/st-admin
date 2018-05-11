@@ -3,7 +3,7 @@ h1 Listing portal_users
 = render "filter_form"
 = form_for :push_form, url: { action: :push } do |f|
   = f.label :message, "Message"
-  = f.text_field :message
+  = f.text_area :message
   = f.hidden_field :config_id
   = f.submit 'Send'
   table.table.table-hover
